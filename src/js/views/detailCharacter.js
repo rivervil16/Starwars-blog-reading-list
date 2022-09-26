@@ -1,6 +1,6 @@
 import React from "react";
 
-export const DetailCharacter = () => {
+export const DetailCharacter = ({name, picture, hair, }) => {
   return (
     <div className="m-0 row justify-content-center">
       <div className="card mb-3" style={{ maxWidth: 940 }}>
@@ -10,7 +10,7 @@ export const DetailCharacter = () => {
           </div>.
           <div className="col-md-6">
             <div className="card-body">
-              <h5 className="card-title">Card title</h5>
+              <h5 className="card-title">{name}</h5>
               <p className="card-text">
                 This is a wider card with supporting text below as a natural
                 lead-in to additional content. This content is a little bit

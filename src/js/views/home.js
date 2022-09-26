@@ -1,39 +1,29 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../../styles/home.css";
+import { Context } from "../store/appContext";
 import { Card } from "../component/card";
-import { Planets } from "../component/planets";
 
 export const Home = () => {
+  const { store, actions } = useContext(Context);
+  console.log(store.characters);
   return (
     <div>
       <div>
         <h1 className="text-danger">Personajes</h1>
         <div className="d-flex overflow-scroll">
           {/* Aca hacemos el scroll */}
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {store.characters.map((element, i) => {
+            return <Card name={element.name}/>;
+          })}
         </div>
       </div>
       <div>
         <h1 className="text-danger">Planetas</h1>
         <div className="d-flex overflow-scroll">
           {/* Aca hacemos el scroll */}
-          <Planets />
-          <Planets />
-          <Planets />
-          <Planets />
-          <Planets />
-          <Planets />
-          <Planets />
-          <Planets />
+          {store.planets.map((element, i) => {
+            return <Card name={element.name}/>;
+          })}
         </div>
       </div>
     </div>
