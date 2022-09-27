@@ -26,11 +26,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         addedToFavoritos.push(item);
         setStore({ favoritos: addedToFavoritos });
       },
-      deleteFavoritos: (item) => {
+      deleteFavoritos: (index) => {
         let deleteFromFavoritos = getStore().favoritos;
-        let chauFavoritos = deleteFromFavoritos.filter(
-          (element, i) => i != index
-        );
+        let chauFavoritos = deleteFromFavoritos.filter((element, i) => i != index);
         setStore({ favoritos: chauFavoritos });
       },
       exampleFunction: () => {

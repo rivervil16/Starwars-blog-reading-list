@@ -36,7 +36,7 @@ export const DetailPlanet = () => {
                 <li>Gravedad: {store.unicPlanet?.gravity}</li>
               </ul>
               <p className="card-text">
-                <small className="text-muted">Last updated 3 mins ago</small>
+                <small className="text-muted"></small>
               </p>
             </div>
           </div>
