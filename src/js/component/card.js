@@ -1,27 +1,32 @@
 import React, { Component } from "react";
 
-export const Card = ({ name }) => {
+export const Card = ({ name, uid, type }) => {
   return (
     <div className="card col-4 mx-1">
       <img
         className="card-img-top"
-        src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/hc_940x529/public/media/image/2018/08/star-wars-como-evoluciono-luke-skywalker-viejo-canon.jpg?itok=AYO22MJM"
+        src={
+          /*
+          aca abajo usamos un if (el del nombre especial) para traer la imagen de Tatoonie. La imagen no estaba disonible en la api.
+          
+          Queda el problema de la S de Characters.
+          */
+          type == "planets" && uid == 1
+            ? "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ed97b542-8697-4d5c-a783-0dd8185c89d0/d15sn9h-b91d0d97-8378-4b8c-b943-dd1b39a21a84.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2VkOTdiNTQyLTg2OTctNGQ1Yy1hNzgzLTBkZDgxODVjODlkMFwvZDE1c245aC1iOTFkMGQ5Ny04Mzc4LTRiOGMtYjk0My1kZDFiMzlhMjFhODQuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.TbpQRH5usavAhtJl_KJ7Tg7eyJBgiVM7fwz7iddfc_4"
+            : `https://starwars-visualguide.com/assets/img/${type}/${uid}.jpg`
+        }
         alt="Card image cap"
       />
       <div className="card-body">
         <h5 className="card-title">{name}</h5>
-        <p className="card-text">
-          Some quick example text srgfgfsfSEFSEFSto build on the card title and
-          make up the bulk of the card's content.
-        </p>
         <div className="two-buttons d-flex justify-content-between">
-          <a href="/character" className="btn btn-outline-primary fs-5">
+          <a href={`/${type}/${uid}`} className="btn btn-outline-primary fs-5">
             Learn more!
           </a>
           <a
             href="#"
             className="btn btn-outline-warning fs-5"
-            /* onClick={agregarFavorito} */
+            onClick={() => actions.addFav({ id: uid, name: name })}
           >
             ♡
           </a>

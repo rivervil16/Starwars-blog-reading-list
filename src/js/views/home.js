@@ -5,7 +5,6 @@ import { Card } from "../component/card";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
-  console.log(store.characters);
   return (
     <div>
       <div>
@@ -13,7 +12,14 @@ export const Home = () => {
         <div className="d-flex overflow-scroll">
           {/* Aca hacemos el scroll */}
           {store.characters.map((element, i) => {
-            return <Card name={element.name}/>;
+            return (
+              <Card
+                name={element.name}
+                uid={element.uid}
+                type={"character"}
+                key={i}
+              />
+            );
           })}
         </div>
       </div>
@@ -22,7 +28,14 @@ export const Home = () => {
         <div className="d-flex overflow-scroll">
           {/* Aca hacemos el scroll */}
           {store.planets.map((element, i) => {
-            return <Card name={element.name}/>;
+            return (
+              <Card
+                name={element.name}
+                uid={element.uid}
+                type={"planets"}
+                key={i}
+              />
+            );
           })}
         </div>
       </div>

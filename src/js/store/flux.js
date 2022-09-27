@@ -1,3 +1,5 @@
+import { element } from "prop-types";
+
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
@@ -15,9 +17,22 @@ const getState = ({ getStore, getActions, setStore }) => {
       ],
       planets: [],
       characters: [],
+      favoritos: [],
     },
     actions: {
       // Use getActions to call a function within a fuction
+      addFavoritos: (item) => {
+        let addedToFavoritos = getStore().favoritos;
+        addedToFavoritos.push(item);
+        setStore({ favoritos: addedToFavoritos });
+      },
+      deleteFavoritos: (item) => {
+        let deleteFromFavoritos = getStore().favoritos;
+        let chauFavoritos = deleteFromFavoritos.filter(
+          (element, i) => i != index
+        );
+        setStore({ favoritos: chauFavoritos });
+      },
       exampleFunction: () => {
         getActions().changeColor(0, "green");
       },
@@ -34,6 +49,21 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ characters: data.results }))
           .catch((err) => console.error(err));
       },
+
+      eachCharacter: (uid) => {
+        fetch("https://www.swapi.tech/api/people/" + uid)
+          .then((resp) => resp.json())
+          .then((resp) => setStore({ unicCharacter: resp.result.properties }))
+          .catch((err) => console.error(err));
+      },
+      eachPlanet: (uid) => {
+        console.log(uid);
+        fetch("https://www.swapi.tech/api/planets/" + uid)
+          .then((resp) => resp.json())
+          .then((resp) => setStore({ unicPlanet: resp.result.properties }))
+          .catch((err) => console.error(err));
+      },
+
       changeColor: (index, color) => {
         //get the store
         const store = getStore();
