@@ -13,12 +13,13 @@ export const DetailCharacter = () => {
 
   console.log(store.unicPlanet);
   return (
-    <div className="m-0 row justify-content-center">
-      <div className="card mb-3" style={{ maxWidth: 940 }}>
+    <div className="m-0 row justify-content-center ">
+      <div className="card mb-3 bg-dark text-white" style={{ maxWidth: 940 }}>
         <div className="row g-0">
           <div className="col-md-4">
             <img
-              src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/hc_940x529/public/media/image/2018/08/star-wars-como-evoluciono-luke-skywalker-viejo-canon.jpg?itok=AYO22MJM"
+              /*Esta imagen deberia ser de 800*600*/
+              src={`https://starwars-visualguide.com/assets/img/characters/${theid}.jpg`}
               className="img-fluid rounded-start"
               alt="..."
               height={800}

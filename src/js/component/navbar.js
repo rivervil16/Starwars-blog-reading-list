@@ -8,7 +8,7 @@ export const Navbar = () => {
   console.log(store.favoritos);
 
   return (
-    <nav className="navbar navbar-light bg-light mb-3">
+    <nav className="navbar navbar-light bg-light mb-3 bg-dark">
       <Link to="/#">
         <img
           src="https://seeklogo.com/images/S/Star_Wars-logo-2B2C24F703-seeklogo.com.png"
@@ -29,10 +29,19 @@ export const Navbar = () => {
         </button>
         <ul className="dropdown-menu">
           {store.favoritos.map((element, i) => {
-            return <li>
-              {element.name}
-              <button onClick={()=>actions.deleteFavoritos(i)}>Borrar</button>
-              </li>;
+            return (
+              <li>
+                {element.name}
+                <button
+                  type="button"
+                  className="close btn"
+                  aria-label="Close"
+                  onClick={() => actions.deleteFavoritos(i)}
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </li>
+            );
           })}
         </ul>
       </div>
